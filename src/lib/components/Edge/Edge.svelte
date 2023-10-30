@@ -311,7 +311,10 @@
 			style:cursor={edgeClick || hovering ? 'pointer' : 'move'}
 			style:--prop-target-edge-color={edgeClick || hovering ? targetColor || null : 'transparent'}
 			d={path}
-			on:mousedown={edgeClick}
+			on:mousedown={() => {
+				edgeClick(edge);
+				destroy();
+			}}
 			on:mouseenter={() => (hovering = true)}
 			on:mouseleave={() => (hovering = false)}
 			bind:this={DOMPath}
